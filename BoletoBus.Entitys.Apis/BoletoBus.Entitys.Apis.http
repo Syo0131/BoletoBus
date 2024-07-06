@@ -1,0 +1,6 @@
+@BoletoBus.Entitys.Apis_HostAddress = http://localhost:5122
+
+GET {{BoletoBus.Entitys.Apis_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

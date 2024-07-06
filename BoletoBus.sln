@@ -47,31 +47,47 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{15097CB1-964E-4927-B10F-6B205554EBCA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoletoBus.Mesa.Application", "BoletoBus.Mesa.Application\BoletoBus.Mesa.Application.csproj", "{163FEE1C-F12D-4CD4-8220-5809FD6F2C1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoletoBus.Mesa.Application", "BoletoBus.Mesa.Application\BoletoBus.Mesa.Application.csproj", "{163FEE1C-F12D-4CD4-8220-5809FD6F2C1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoletoBus.Infraestructure", "BoletoBus.Infraestructure\BoletoBus.Infraestructure.csproj", "{6EDF381C-CAE2-4CC4-8649-1B0194A381C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoletoBus.Infraestructure", "BoletoBus.Infraestructure\BoletoBus.Infraestructure.csproj", "{6EDF381C-CAE2-4CC4-8649-1B0194A381C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoletoBus.Mesa.Domain", "BoletoBus.Mesa.Domain\BoletoBus.Mesa.Domain.csproj", "{33FCE7F1-3393-4BAA-9505-B35452145A91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoletoBus.Mesa.Domain", "BoletoBus.Mesa.Domain\BoletoBus.Mesa.Domain.csproj", "{33FCE7F1-3393-4BAA-9505-B35452145A91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoletoBus.Mesa.Persistence", "BoletoBus.Mesa.Persistence\BoletoBus.Mesa.Persistence.csproj", "{798FEDA7-B9EE-4AB5-963F-16F60349777E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoletoBus.Mesa.Persistence", "BoletoBus.Mesa.Persistence\BoletoBus.Mesa.Persistence.csproj", "{798FEDA7-B9EE-4AB5-963F-16F60349777E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoletoBus.Mesa.Api", "BoletoBus.Mesa.Api\BoletoBus.Mesa.Api.csproj", "{1F721E02-2CBD-4D4B-B7BE-B61013E4166D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoletoBus.Mesa.Api", "BoletoBus.Mesa.Api\BoletoBus.Mesa.Api.csproj", "{1F721E02-2CBD-4D4B-B7BE-B61013E4166D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoletoBus.Usuario.Api", "BoletoBus.Usuario.Api\BoletoBus.Usuario.Api.csproj", "{ECA50564-5589-4C1C-9E1F-3EA78458BF50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoletoBus.Usuario.Api", "BoletoBus.Usuario.Api\BoletoBus.Usuario.Api.csproj", "{ECA50564-5589-4C1C-9E1F-3EA78458BF50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoletoBus.Menu.Api", "BoletoBus.Menu.Api\BoletoBus.Menu.Api.csproj", "{AEEE5F0E-F8D6-46DE-9E68-DDFE90E0CEDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoletoBus.Menu.Api", "BoletoBus.Menu.Api\BoletoBus.Menu.Api.csproj", "{AEEE5F0E-F8D6-46DE-9E68-DDFE90E0CEDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoletoBus.Usuario.Application", "BoletoBus.Usuario.Application\BoletoBus.Usuario.Application.csproj", "{6F442405-6ADA-4340-98E1-C83A8DEAE064}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoletoBus.Usuario.Application", "BoletoBus.Usuario.Application\BoletoBus.Usuario.Application.csproj", "{6F442405-6ADA-4340-98E1-C83A8DEAE064}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoletoBus.Menu.Application", "BoletoBus.Menu.Application\BoletoBus.Menu.Application.csproj", "{CC87DAE4-8595-4E9A-A1CB-477394984EC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoletoBus.Menu.Application", "BoletoBus.Menu.Application\BoletoBus.Menu.Application.csproj", "{CC87DAE4-8595-4E9A-A1CB-477394984EC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoletoBus.Menu.Domain", "BoletoBus.Menu.Domain\BoletoBus.Menu.Domain.csproj", "{7BA86593-EE91-4ED3-8984-E86024BA8B3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoletoBus.Menu.Domain", "BoletoBus.Menu.Domain\BoletoBus.Menu.Domain.csproj", "{7BA86593-EE91-4ED3-8984-E86024BA8B3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoletoBus.Menu.Persistence", "BoletoBus.Menu.Persistence\BoletoBus.Menu.Persistence.csproj", "{3BE256A7-F395-43ED-8B5F-45948737B9F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoletoBus.Menu.Persistence", "BoletoBus.Menu.Persistence\BoletoBus.Menu.Persistence.csproj", "{3BE256A7-F395-43ED-8B5F-45948737B9F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoletoBus.Usuario.Domain", "BoletoBus.Usuario.Domain\BoletoBus.Usuario.Domain.csproj", "{DE10FF97-D221-44C8-9BEE-721D3F859CF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoletoBus.Usuario.Domain", "BoletoBus.Usuario.Domain\BoletoBus.Usuario.Domain.csproj", "{DE10FF97-D221-44C8-9BEE-721D3F859CF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoletoBus.Usuario.Persistence", "BoletoBus.Usuario.Persistence\BoletoBus.Usuario.Persistence.csproj", "{71DC4CEC-7BB5-4018-9C66-31827AFB2DBC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoletoBus.Usuario.Persistence", "BoletoBus.Usuario.Persistence\BoletoBus.Usuario.Persistence.csproj", "{71DC4CEC-7BB5-4018-9C66-31827AFB2DBC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Entities Management", "Entities Management", "{F88526D5-D26F-446E-8DEF-92705E76CCD9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Persistence", "Persistence", "{47677C0F-97F4-4B0F-89E4-17BB80E32DFD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{24ECD7A7-144B-4772-9ADD-CE26D32438A7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{CB61777A-8A03-4D71-A026-ACFAAAB3A1A5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apis", "Apis", "{F45EEDD0-03A6-468D-88F0-71CD83679C01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoletoBus.Entitys.Api", "BoletoBus.Entitys.Apis\BoletoBus.Entitys.Api.csproj", "{6C78922C-AE95-4052-B642-E9F03E21CB46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoletoBus.Entities.Application", "BoletoBus.Entitys.Application\BoletoBus.Entities.Application.csproj", "{9D21557B-06E9-433B-80F1-DE099301295A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoletoBus.Entities.Domain", "BoletoBus.Entitys.Domain\BoletoBus.Entities.Domain.csproj", "{56D07347-BC0C-4E4A-9B3E-B490D58FE1F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -135,6 +151,18 @@ Global
 		{71DC4CEC-7BB5-4018-9C66-31827AFB2DBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71DC4CEC-7BB5-4018-9C66-31827AFB2DBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71DC4CEC-7BB5-4018-9C66-31827AFB2DBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C78922C-AE95-4052-B642-E9F03E21CB46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C78922C-AE95-4052-B642-E9F03E21CB46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C78922C-AE95-4052-B642-E9F03E21CB46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C78922C-AE95-4052-B642-E9F03E21CB46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D21557B-06E9-433B-80F1-DE099301295A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D21557B-06E9-433B-80F1-DE099301295A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D21557B-06E9-433B-80F1-DE099301295A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D21557B-06E9-433B-80F1-DE099301295A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56D07347-BC0C-4E4A-9B3E-B490D58FE1F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56D07347-BC0C-4E4A-9B3E-B490D58FE1F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56D07347-BC0C-4E4A-9B3E-B490D58FE1F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56D07347-BC0C-4E4A-9B3E-B490D58FE1F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -174,6 +202,14 @@ Global
 		{3BE256A7-F395-43ED-8B5F-45948737B9F2} = {63A4D27A-2BB6-46A5-B43A-5BA8B5FD3256}
 		{DE10FF97-D221-44C8-9BEE-721D3F859CF5} = {5F6949B1-2753-4DCA-8278-1C72B925C7CA}
 		{71DC4CEC-7BB5-4018-9C66-31827AFB2DBC} = {EFF8628D-8AF0-4039-83BF-B6E476E9E795}
+		{F88526D5-D26F-446E-8DEF-92705E76CCD9} = {0F6FB245-DEB0-4F7D-8910-BB339FE5B3B0}
+		{47677C0F-97F4-4B0F-89E4-17BB80E32DFD} = {F88526D5-D26F-446E-8DEF-92705E76CCD9}
+		{24ECD7A7-144B-4772-9ADD-CE26D32438A7} = {F88526D5-D26F-446E-8DEF-92705E76CCD9}
+		{CB61777A-8A03-4D71-A026-ACFAAAB3A1A5} = {F88526D5-D26F-446E-8DEF-92705E76CCD9}
+		{F45EEDD0-03A6-468D-88F0-71CD83679C01} = {F88526D5-D26F-446E-8DEF-92705E76CCD9}
+		{6C78922C-AE95-4052-B642-E9F03E21CB46} = {F45EEDD0-03A6-468D-88F0-71CD83679C01}
+		{9D21557B-06E9-433B-80F1-DE099301295A} = {CB61777A-8A03-4D71-A026-ACFAAAB3A1A5}
+		{56D07347-BC0C-4E4A-9B3E-B490D58FE1F3} = {24ECD7A7-144B-4772-9ADD-CE26D32438A7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3DC1A99C-B9AD-42B1-9814-338588B0FB1D}

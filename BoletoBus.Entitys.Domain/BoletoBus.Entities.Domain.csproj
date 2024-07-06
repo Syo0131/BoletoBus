@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Entity\" />
+    <ProjectReference Include="..\BoletoBus.Common.Data\BoletoBus.Common.Data.csproj" />
   </ItemGroup>
 
 </Project>
