@@ -1,8 +1,6 @@
-using BusMonoliticApp.Web.Data.Models;
-using BusMonoliticApp.WEb.Data.Models;
-using BusTicketsMonolitic.Web.BL.Core;
-
-namespace BusTicketsMonolitic.Web.BL.Interfaces
+﻿using BoletoBus.Entities.Application.Base;
+using BoletoBus.Entities.Application.Dtos.Menu;
+namespace BoletoBus.Entities.Application.Interfaces
 {
     public interface IMenuService
     {

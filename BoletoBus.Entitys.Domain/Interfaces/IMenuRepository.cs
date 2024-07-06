@@ -5,9 +5,9 @@ using BoletoBus.Entities.Domain.Entities;
 
 namespace BoletoBus.Entities.Domain.Interfaces
 {
-    public interface IMenuRepository : IBaseRepository<Menu, menu >
+    public interface IMenuRepository : IBaseRepository<Domain.Entities.Menu, int >
     {
-        List<Menu> GetAll();
+        List<Domain.Entities.Menu> GetMenuByIdPlato(int IdPlato);
 
     }
 }

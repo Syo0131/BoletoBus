@@ -1,13 +1,12 @@
-﻿namespace BusTicketsMonolitic.Web.BL.Core
+﻿namespace BoletoBus.Entities.Application.Base;
+
+public class ServiceResult
 {
-    public class ServiceResult
+    public ServiceResult()
     {
-        public ServiceResult()
-        {
-            this.Success = true;
-        }
-        public bool Success { get; set; }
-        public string? Message { get; set; }
-        public dynamic? Data { get; set; }
+        this.Success = true;
     }
+    public bool Success { get; set; }
+    public string? Message { get; set; }
+    public dynamic? Data { get; set; }
 }

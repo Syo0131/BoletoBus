@@ -83,11 +83,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apis", "Apis", "{F45EEDD0-03A6-468D-88F0-71CD83679C01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoletoBus.Entitys.Api", "BoletoBus.Entitys.Apis\BoletoBus.Entitys.Api.csproj", "{6C78922C-AE95-4052-B642-E9F03E21CB46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoletoBus.Entitys.Api", "BoletoBus.Entitys.Apis\BoletoBus.Entitys.Api.csproj", "{6C78922C-AE95-4052-B642-E9F03E21CB46}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoletoBus.Entities.Application", "BoletoBus.Entitys.Application\BoletoBus.Entities.Application.csproj", "{9D21557B-06E9-433B-80F1-DE099301295A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoletoBus.Entities.Application", "BoletoBus.Entitys.Application\BoletoBus.Entities.Application.csproj", "{9D21557B-06E9-433B-80F1-DE099301295A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoletoBus.Entities.Domain", "BoletoBus.Entitys.Domain\BoletoBus.Entities.Domain.csproj", "{56D07347-BC0C-4E4A-9B3E-B490D58FE1F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoletoBus.Entities.Domain", "BoletoBus.Entitys.Domain\BoletoBus.Entities.Domain.csproj", "{56D07347-BC0C-4E4A-9B3E-B490D58FE1F3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoletoBus.Entities.Persistence", "BoletoBus.Entities.Persistence\BoletoBus.Entities.Persistence.csproj", "{DEBDF64A-0676-44F7-B886-1D075CA0A36E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IOC", "IOC", "{E589EE07-2C84-48CB-8E09-FDABC5AC91CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoletoBus.Entities.IOC", "BoletoBus.Entities.IOC\BoletoBus.Entities.IOC.csproj", "{7216EB16-564D-4E57-A647-C56E5B7D8C7A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -163,6 +169,14 @@ Global
 		{56D07347-BC0C-4E4A-9B3E-B490D58FE1F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56D07347-BC0C-4E4A-9B3E-B490D58FE1F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56D07347-BC0C-4E4A-9B3E-B490D58FE1F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEBDF64A-0676-44F7-B886-1D075CA0A36E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEBDF64A-0676-44F7-B886-1D075CA0A36E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEBDF64A-0676-44F7-B886-1D075CA0A36E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEBDF64A-0676-44F7-B886-1D075CA0A36E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7216EB16-564D-4E57-A647-C56E5B7D8C7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7216EB16-564D-4E57-A647-C56E5B7D8C7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7216EB16-564D-4E57-A647-C56E5B7D8C7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7216EB16-564D-4E57-A647-C56E5B7D8C7A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -210,6 +224,9 @@ Global
 		{6C78922C-AE95-4052-B642-E9F03E21CB46} = {F45EEDD0-03A6-468D-88F0-71CD83679C01}
 		{9D21557B-06E9-433B-80F1-DE099301295A} = {CB61777A-8A03-4D71-A026-ACFAAAB3A1A5}
 		{56D07347-BC0C-4E4A-9B3E-B490D58FE1F3} = {24ECD7A7-144B-4772-9ADD-CE26D32438A7}
+		{DEBDF64A-0676-44F7-B886-1D075CA0A36E} = {47677C0F-97F4-4B0F-89E4-17BB80E32DFD}
+		{E589EE07-2C84-48CB-8E09-FDABC5AC91CE} = {F88526D5-D26F-446E-8DEF-92705E76CCD9}
+		{7216EB16-564D-4E57-A647-C56E5B7D8C7A} = {E589EE07-2C84-48CB-8E09-FDABC5AC91CE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3DC1A99C-B9AD-42B1-9814-338588B0FB1D}
