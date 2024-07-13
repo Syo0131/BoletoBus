@@ -1,11 +1,7 @@
-﻿using System.Net.NetworkInformation;
-
-namespace BoletoBus.Menu.IOC
+﻿namespace BoletoBus.Menu.IOC
 {
-    public static class MenuDependency
+    public class Class1
     {
-        public static void AddMenuDependency(this IserviceCollection service) 
-        { 
-        }
+
     }
 }
