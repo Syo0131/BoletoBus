@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BoletoBus.Menu.IOC
+﻿namespace BoletoBus.Menu.IOC
 {
-    internal class MenuDependency
+    public class Class1
     {
+
     }
 }
