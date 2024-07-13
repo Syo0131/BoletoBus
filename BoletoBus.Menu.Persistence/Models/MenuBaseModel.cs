@@ -1,4 +1,4 @@
-﻿namespace BoletoBus.Entities.Application.Dtos.Menu
+﻿namespace BoletoBus.Menu.Persistence.Models
 {
 
 
