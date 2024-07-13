@@ -10,4 +10,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BoletoBus.Entities.IOC\BoletoBus.Menu.IOC.csproj" />
+    <ProjectReference Include="..\BoletoBus.Menu.Persistence\BoletoBus.Menu.Persistence.csproj" />
+  </ItemGroup>
+
 </Project>

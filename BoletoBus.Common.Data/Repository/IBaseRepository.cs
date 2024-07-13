@@ -27,7 +27,7 @@ namespace BoletoBus.Common.Data.Repository
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        List<TEntity> GetAll(TEntity entity);
+        List<TEntity> GetAll();
         /// <summary>
         /// 
         /// </summary>

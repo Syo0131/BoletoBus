@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BoletoBus.Mesa.Domain\BoletoBus.Mesa.Domain.csproj" />
+    <ProjectReference Include="..\BoletoBus.Mesa.Persistence\BoletoBus.Mesa.Persistence.csproj" />
+  </ItemGroup>
+
 </Project>
