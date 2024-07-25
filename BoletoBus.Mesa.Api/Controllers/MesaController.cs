@@ -1,19 +1,19 @@
-﻿using BoletoBus.Menu.Application.Dtos;
-using BoletoBus.Menu.Application.Interfaces;
+﻿using BoletoBus.Mesa.Application.Dtos;
+using BoletoBus.Mesa.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace BoletoBus.Menu.Api.Controllers
+namespace BoletoBus.Mesa.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MenuController : ControllerBase
+    public class MesaController : ControllerBase
     {
-        private readonly IMenuService menuService;
-        public MenuController(IMenuService menuService)
+        private readonly IMesaService mesaService;
+        public MesaController(IMesaService mesaService)
         {
-            this.menuService = menuService;
+            this.mesaService =mesaService;
         }
 
 
@@ -21,7 +21,7 @@ namespace BoletoBus.Menu.Api.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var result = this.menuService.GetMenu();
+            var result = this.mesaService.GetMesa();
             if (!result.Success)
             {
                 return BadRequest(result);
@@ -30,14 +30,14 @@ namespace BoletoBus.Menu.Api.Controllers
             {
                 return Ok(result);
             }
-            
+
         }
 
         // GET api/<MenuController>/5
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var result = this.menuService.GetMenus(id);
+            var result = this.mesaService.GetMesas(id);
             if (!result.Success)
             {
                 return BadRequest(result);
@@ -50,9 +50,9 @@ namespace BoletoBus.Menu.Api.Controllers
 
         // POST api/<MenuController>
         [HttpPost]
-        public IActionResult Post([FromBody] MenuSaveModel menuSave)
+        public IActionResult Post([FromBody] MesaSaveModel mesaSave)
         {
-            var result = this.menuService.SaveMenu(menuSave);
+            var result = this.mesaService.SaveMesa(mesaSave);
             if (!result.Success)
             {
                 return BadRequest(result);
@@ -65,9 +65,9 @@ namespace BoletoBus.Menu.Api.Controllers
 
         // PUT api/<MenuController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(MenuUpdateModel menuUpdate)
+        public IActionResult Put(MesaUpdateModel mesaUpdate)
         {
-            var result = this.menuService.UpdateMenu(menuUpdate);
+            var result = this.mesaService.ActualizarMesa(mesaUpdate);
             if (!result.Success)
             {
                 return BadRequest(result);
@@ -80,9 +80,9 @@ namespace BoletoBus.Menu.Api.Controllers
 
         // DELETE api/<MenuController>/5
         [HttpDelete("{id}")]
-        public IActionResult Delete(MenuDeleteModel menuDelete)
+        public IActionResult Delete(MesaDeleteModel mesaDelete)
         {
-            var result = this.menuService.DeleteMenu(menuDelete);
+            var result = this.mesaService.DeleteMesa(mesaDelete);
             if (!result.Success)
             {
                 return BadRequest(result);

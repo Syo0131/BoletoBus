@@ -9,8 +9,8 @@ namespace BoletoBus.Menu.Application.Interfaces
         ServiceResult GetMenu();
         ServiceResult GetMenus(int id);
         ServiceResult SaveMenu(MenuSaveModel savemenu);
-        ServiceResult UpdateMenu(MenuUpdateModel updatemenu);
-        ServiceResult DeleteMenu(MenuDeleteModel deletemenu);
+        ServiceResult UpdateMenu(MenuUpdateModel menuUpdate);
+        ServiceResult DeleteMenu(MenuDeleteModel menudelete);
         
     }
 }

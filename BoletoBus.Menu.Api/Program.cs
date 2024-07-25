@@ -1,4 +1,4 @@
-using BoletoBus.Menu.IOC.Dependency;
+using BoletoBus.Menu.IOC.Dependencies;
 using BoletoBus.Menu.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,7 +18,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<BoletosBusContext>(options => 
 options.UseSqlServer(builder.Configuration.GetConnectionString("BoletoBusContext")));
 
-builder.Services.AddMenuDependency();
+builder.Services.AddMenuDependecy();
 
 
 
