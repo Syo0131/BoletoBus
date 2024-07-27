@@ -12,19 +12,49 @@ namespace BoletoBus.Menu.Application.Services
         private readonly IMenuRepository menuRepository;
         private readonly ILogger<MenuService> logger;
 
+
         public MenuService(IMenuRepository menuRepository, ILogger<MenuService> logger)
         {
             this.menuRepository = menuRepository;
             this.logger = logger;
         }
-        public ServiceResult DeleteMenu(MenuDeleteModel deletemenu)
-        {
-            throw new NotImplementedException();
-        }
 
         public ServiceResult GetMenu()
         {
-            throw new NotImplementedException();
+            ServiceResult result = new ServiceResult();
+            try
+            {
+                var menus = this.menuRepository.GetAll();
+
+                result.Result = (from menu in menus // Utiliza la variable menus en lugar de llamar nuevamente a menuRepository.GetAll()
+                                 where menu.Deleted == false
+                                 select new MenuModel
+                                 {
+                                     IdPlato = menu.IdPlato,
+                                     Nombre = menu.Nombre,
+                                     Descripcion = menu.Descripcion,
+                                     Precio = menu.Precio,
+                                     Categoria = menu.Categoria
+                                 }).FirstOrDefault();
+                if (result.Result == null)
+                {
+                    result.Success = false;
+                    result.Message = "No se encontró ningún menú.";
+                }
+                else
+                {
+                    result.Success = true;
+                    result.Message = "Menú obtenido exitosamente.";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                result.Success = false;
+                result.Message = "Error obteniendo el menu.";
+                this.logger.LogError(message: result.Message, ex.ToString());
+            }
+            return result;
         }
 
         public ServiceResult GetMenus(int id)
@@ -32,44 +62,107 @@ namespace BoletoBus.Menu.Application.Services
             ServiceResult result = new ServiceResult();
             try
             {
-                result.Data = menuRepository.GetEntityBy(id);
+                var menus = this.menuRepository.GetAll();
+
+                result.Result = (from menu in menus // Utiliza la variable menus en lugar de llamar nuevamente a menuRepository.GetAll()
+                                 where menu.Id == id && menu.Deleted == false
+                                 select new MenuModel
+                                 {
+                                     IdPlato = menu.IdPlato,
+                                     Nombre = menu.Nombre,
+                                     Descripcion = menu.Descripcion,
+                                     Precio = menu.Precio,
+                                     Categoria = menu.Categoria
+                                 }).FirstOrDefault();
+
+                if (result.Result == null)
+                {
+                    result.Success = false;
+                    result.Message = "No se encontró el menú con el ID especificado.";
+                }
+                else
+                {
+                    result.Success = true;
+                    result.Message = "Menú obtenido exitosamente.";
+                }
+
             }
             catch (Exception ex)
             {
-
                 result.Success = false;
-                result.Message = "No se pudo añadir al usuario.";
-                this.logger.LogError(result.Message, ex.ToString);
-
+                result.Message = "Error obteniendo el menu.";
+                this.logger.LogError(message: result.Message, ex.ToString());
             }
             return result;
         }
 
-        ServiceResult SaveMenu(MenuSaveModel savemenu)
+        public ServiceResult SaveMenu(MenuSaveModel? savemenu)
         {
             ServiceResult result = new ServiceResult();
+
             try
             {
-                Domain.Entities.Menu menu = new Domain.Entities.Menu();
+                if (savemenu == null)
+                {
+                    result.Success = false;
+                    result.Message = "El modelo de menu a guardar no puede ser nulo";
+
+                    return result;
+                }
+
+
+                Domain.Entities.Menu menu = new Domain.Entities.Menu
+                {
+                    IdPlato = savemenu.IdPlato,
+                    Nombre = savemenu.Nombre,
+                    Descripcion = savemenu.Descripcion,
+                    Precio = savemenu.Precio,
+                    Categoria = savemenu.Categoria
+                };
+
                 this.menuRepository.Save(menu);
+
+                result.Success = true;
+                result.Message = "Menú guardado exitosamente.";
 
             }
             catch (Exception ex)
             {
 
                 result.Success = false;
-                result.Message = "No se pudo añadir al usuario.";
-                this.logger.LogError(result.Message, ex.ToString);
+                result.Message = "No se pudo añadir al menu.";
+                this.logger.LogError(result.Message, ex.ToString());
+            }
+            return result;
+
+        }
+
+        public ServiceResult UpdateMenu(MenuUpdateModel menuUpdate)
+        {
+            ServiceResult result = new ServiceResult();
+
+            try
+            {
+                Domain.Entities.Menu update = new Domain.Entities.Menu
+                {
+                    IdPlato = menuUpdate.IdPlato,
+                    Nombre = menuUpdate.Nombre,
+                    Descripcion = menuUpdate.Descripcion,
+                    Precio = menuUpdate.Precio,
+                    Categoria = menuUpdate.Categoria
+                };
+                this.menuRepository.Update(update);
+            }
+            catch (Exception ex)
+            {
+
+                result.Success = false;
+                result.Message = "Error al actualizar el menu";
+                this.logger.LogError (result.Message, ex.ToString());
             }
             return result;
         }
-
-        public ServiceResult UpdateMenu(MenuUpdateModel updatemenu)
-        {
-            throw new NotImplementedException();
-        }
-
-        ServiceResult IMenuService.SaveMenu(MenuSaveModel savemenu)
+        public ServiceResult DeleteMenu(MenuDeleteModel menudelete)
         {
             throw new NotImplementedException();
         }

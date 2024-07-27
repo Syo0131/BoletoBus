@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BoletoBus.Usuario.Persistence.Repository
 {
-    internal class UsuarioRepository : IUsuarioRepository
+    public class UsuarioRepository : IUsuarioRepository
     {
         public void Delete(Domain.Entities.Usuario entity)
         {

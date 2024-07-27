@@ -18,79 +18,79 @@ namespace BoletoBus.Menu.Api.Controllers
 
 
         // GET: api/<MenuController>
-        [HttpGet]
+        [HttpGet("GetMenu")]
         public IActionResult Get()
         {
             var result = this.menuService.GetMenu();
             if (!result.Success)
-            {
+            
                 return BadRequest(result);
-            }
+            
             else
-            {
+            
                 return Ok(result);
-            }
+            
             
         }
 
         // GET api/<MenuController>/5
-        [HttpGet("{id}")]
+        [HttpGet("GetMenubyId")]
         public IActionResult Get(int id)
         {
             var result = this.menuService.GetMenus(id);
             if (!result.Success)
-            {
+            
                 return BadRequest(result);
-            }
+            
             else
-            {
+            
                 return Ok(result);
-            }
+            
         }
 
         // POST api/<MenuController>
-        [HttpPost]
+        [HttpPost("SaveMenu")]
         public IActionResult Post([FromBody] MenuSaveModel menuSave)
         {
             var result = this.menuService.SaveMenu(menuSave);
             if (!result.Success)
-            {
+            
                 return BadRequest(result);
-            }
+            
             else
-            {
+            
                 return Ok(result);
-            }
+            
         }
 
         // PUT api/<MenuController>/5
-        [HttpPut("{id}")]
+        [HttpPut("UpdateMenu")]
         public IActionResult Put(MenuUpdateModel menuUpdate)
         {
             var result = this.menuService.UpdateMenu(menuUpdate);
             if (!result.Success)
-            {
+            
                 return BadRequest(result);
-            }
+            
             else
-            {
+            
                 return Ok(result);
-            }
+            
         }
 
         // DELETE api/<MenuController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete("DeleteMenu")]
         public IActionResult Delete(MenuDeleteModel menuDelete)
         {
             var result = this.menuService.DeleteMenu(menuDelete);
             if (!result.Success)
-            {
+            
                 return BadRequest(result);
-            }
+            
             else
-            {
+            
                 return Ok(result);
-            }
+            
 
         }
     }

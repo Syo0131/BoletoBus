@@ -8,7 +8,7 @@ namespace BoletoBus.Usuario.Application.Interfaces
     {
         ServiceResult GetUsuario();
         ServiceResult GetUsuarios(int id);
-        ServiceResult SaveUsuario(UsuarioSaveModel SaveUsuario);
+        ServiceResult GuardarUsuario(UsuarioSaveModel SaveUsuario);
         ServiceResult UpdateUsuario(UsuarioUpdateModel usuarioupdate);
         ServiceResult DeleteUsuario (UsuarioDeleteModel usuarioDelete);
 

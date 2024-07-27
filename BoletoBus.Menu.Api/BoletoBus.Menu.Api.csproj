@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BoletoBus.Menu.IOC\BoletoBus.Menu.IOC.csproj" />
-    <ProjectReference Include="..\BoletoBus.Menu.Persistence\BoletoBus.Menu.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

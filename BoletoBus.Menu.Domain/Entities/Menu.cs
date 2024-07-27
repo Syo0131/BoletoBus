@@ -14,5 +14,6 @@ namespace BoletoBus.Menu.Domain.Entities
         public string? Descripcion { get; set; }
         public decimal Precio { get; set; }
         public string? Categoria { get; set; }
+        
     }
 }

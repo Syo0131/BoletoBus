@@ -45,9 +45,25 @@ namespace BoletoBus.Menu.Persistence.Repositories
 
         public void Save(Domain.Entities.Menu entity)
         {
-            this.context.Menu.Add(entity);
-            this.context.SaveChanges();
+            try
+            {
+                Domain.Entities.Menu menu = new Domain.Entities.Menu
+                {
+                    IdPlato = entity.IdPlato,
+                    Nombre = entity.Nombre,
+                    Descripcion = entity.Descripcion,
+                    Precio = entity.Precio,
+                    Categoria = entity.Categoria
+                };
 
+                this.context.Menu.Add(menu);
+                this.context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al salvar el menu");
+            }
 
         }
 

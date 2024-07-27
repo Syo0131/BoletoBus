@@ -4,12 +4,10 @@ namespace BoletoBus.Menu.Application.Base
 {
     public class ServiceResult
     {
-        public ServiceResult()
-        {
-            this.Success = true;
-        }
-        public bool Success { get; set; }
+  
+        public ServiceResult() => this.Success = true;
         public string? Message { get; set; }
-        public dynamic? Data { get; set; }
+        public bool Success { get; set; }
+        public dynamic? Result { get; set; }
     }
 }
