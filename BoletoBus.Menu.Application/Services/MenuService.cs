@@ -21,150 +21,117 @@ namespace BoletoBus.Menu.Application.Services
 
         public ServiceResult GetMenu()
         {
-            ServiceResult result = new ServiceResult();
-            try
+             
+            var menus = menuRepository.GetAll();
+            var menusDtos = menus.Select(r => new MenuDtoAdd
             {
-                var menus = this.menuRepository.GetAll();
+                
+                Nombre = r.Nombre,
+                Descripcion = r.Descripcion,
+                Precio = r.Precio,
+                Categoria = r.Categoria
+            }).ToList();
 
-                result.Result = (from menu in menus // Utiliza la variable menus en lugar de llamar nuevamente a menuRepository.GetAll()
-                                 where menu.Deleted == false
-                                 select new MenuModel
-                                 {
-                                     IdPlato = menu.IdPlato,
-                                     Nombre = menu.Nombre,
-                                     Descripcion = menu.Descripcion,
-                                     Precio = menu.Precio,
-                                     Categoria = menu.Categoria
-                                 }).FirstOrDefault();
-                if (result.Result == null)
-                {
-                    result.Success = false;
-                    result.Message = "No se encontró ningún menú.";
-                }
-                else
-                {
-                    result.Success = true;
-                    result.Message = "Menú obtenido exitosamente.";
-                }
-
-            }
-            catch (Exception ex)
+            return new ServiceResult
             {
-                result.Success = false;
-                result.Message = "Error obteniendo el menu.";
-                this.logger.LogError(message: result.Message, ex.ToString());
-            }
-            return result;
+                Success = true,
+                Message = "Menu obtenido correctamente",
+                Result = menusDtos
+            };
         }
 
         public ServiceResult GetMenus(int id)
         {
-            ServiceResult result = new ServiceResult();
-            try
+            var menus = menuRepository.GetEntityBy(id);
+            if (menus == null)
             {
-                var menus = this.menuRepository.GetAll();
-
-                result.Result = (from menu in menus // Utiliza la variable menus en lugar de llamar nuevamente a menuRepository.GetAll()
-                                 where menu.Id == id && menu.Deleted == false
-                                 select new MenuModel
-                                 {
-                                     IdPlato = menu.IdPlato,
-                                     Nombre = menu.Nombre,
-                                     Descripcion = menu.Descripcion,
-                                     Precio = menu.Precio,
-                                     Categoria = menu.Categoria
-                                 }).FirstOrDefault();
-
-                if (result.Result == null)
+                return new ServiceResult
                 {
-                    result.Success = false;
-                    result.Message = "No se encontró el menú con el ID especificado.";
-                }
-                else
-                {
-                    result.Success = true;
-                    result.Message = "Menú obtenido exitosamente.";
-                }
-
+                    Success = false,
+                    Message = "Menu no encontrado"
+                };
             }
-            catch (Exception ex)
+
+            var MenuDto = new MenuDtoAdd
             {
-                result.Success = false;
-                result.Message = "Error obteniendo el menu.";
-                this.logger.LogError(message: result.Message, ex.ToString());
-            }
-            return result;
+                Nombre = menus.Nombre,
+                Descripcion = menus.Descripcion,
+                Precio = menus.Precio,
+                Categoria = menus.Categoria
+            };
+
+            return new ServiceResult
+            {
+                Success = true,
+                Message = "Menu obtenido correctamente",
+                Result = MenuDto
+            };
         }
 
-        public ServiceResult SaveMenu(MenuSaveModel? savemenu)
-        {
-            ServiceResult result = new ServiceResult();
-
-            try
+        public ServiceResult SaveMenu(MenuSaveModel savemenu)
+        { 
+            Domain.Entities.Menu menu = new Domain.Entities.Menu
             {
-                if (savemenu == null)
-                {
-                    result.Success = false;
-                    result.Message = "El modelo de menu a guardar no puede ser nulo";
+                Id = savemenu.IdPlato,
+                Nombre = savemenu.Nombre,
+                Descripcion = savemenu.Descripcion,
+                Precio = savemenu.Precio,
+                Categoria = savemenu.Categoria
+            };
 
-                    return result;
-                }
-
-
-                Domain.Entities.Menu menu = new Domain.Entities.Menu
-                {
-                    IdPlato = savemenu.IdPlato,
-                    Nombre = savemenu.Nombre,
-                    Descripcion = savemenu.Descripcion,
-                    Precio = savemenu.Precio,
-                    Categoria = savemenu.Categoria
-                };
-
-                this.menuRepository.Save(menu);
-
-                result.Success = true;
-                result.Message = "Menú guardado exitosamente.";
-
-            }
-            catch (Exception ex)
+            this.menuRepository.Save(menu);
+            return new ServiceResult
             {
-
-                result.Success = false;
-                result.Message = "No se pudo añadir al menu.";
-                this.logger.LogError(result.Message, ex.ToString());
-            }
-            return result;
-
+                Success = true,
+                Message = "Se añadio el menu correctamente.",
+            };
         }
 
         public ServiceResult UpdateMenu(MenuUpdateModel menuUpdate)
         {
-            ServiceResult result = new ServiceResult();
-
-            try
+            var Umenu = menuRepository.GetEntityBy(menuUpdate.IdPlato);
+            if (Umenu == null)
             {
-                Domain.Entities.Menu update = new Domain.Entities.Menu
-                {
-                    IdPlato = menuUpdate.IdPlato,
-                    Nombre = menuUpdate.Nombre,
-                    Descripcion = menuUpdate.Descripcion,
-                    Precio = menuUpdate.Precio,
-                    Categoria = menuUpdate.Categoria
+                return new ServiceResult
+                { 
+                    Success = false,
+                    Message = "Menu no encontrado"
                 };
-                this.menuRepository.Update(update);
             }
-            catch (Exception ex)
-            {
 
-                result.Success = false;
-                result.Message = "Error al actualizar el menu";
-                this.logger.LogError (result.Message, ex.ToString());
-            }
-            return result;
+
+            
+            Umenu.Nombre = menuUpdate.Nombre ?? Umenu.Nombre;
+            Umenu.Descripcion = menuUpdate.Descripcion ?? Umenu.Descripcion;
+            Umenu.Precio = menuUpdate.Precio;
+            Umenu.Categoria = menuUpdate.Categoria ?? Umenu.Categoria;
+                
+
+            this.menuRepository.Update(Umenu);
+            return new ServiceResult
+            {
+                Success = true,
+                Message = "Menu actualizado con exito"
+            };
+
         }
         public ServiceResult DeleteMenu(MenuDeleteModel menudelete)
         {
-            throw new NotImplementedException();
+            var Dmenu = menuRepository.GetEntityBy(menudelete.IdPlato);
+            if (Dmenu == null)
+            {
+                return new ServiceResult
+                {
+                    Success = false,
+                    Message = "Menu no encontrado"
+                };
+            }
+            menuRepository.Delete(Dmenu);
+            return new ServiceResult
+            {
+                Success = true,
+                Message = "Menu Elmininado con exito"
+            };
         }
     }
 

@@ -1,7 +1,7 @@
 ﻿
 
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
+
 
 namespace BoletoBus.Mesa.Persistence.Context
 {
@@ -19,3 +19,4 @@ namespace BoletoBus.Mesa.Persistence.Context
         #endregion
     }
 }
+ 

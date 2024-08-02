@@ -1,9 +1,7 @@
 namespace BoletoBus.Mesa.Application.Dtos
 {
-    public class MesaSaveModel
+    public class MesaSaveModel : MesaBase
     {
         public int IdMesa { get; set; }
-        public int Capacidad { get; set; }
-        public string? Estado { get; set; }
     }
 }

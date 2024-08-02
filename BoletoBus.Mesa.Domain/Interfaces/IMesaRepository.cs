@@ -3,9 +3,9 @@
 
 namespace BoletoBus.Mesa.Domain.Interfaces
 {
-    public interface IMesaRepository : IBaseRepository<Domain.Entities.Mesa, int>
+    public interface IMesaRepository : IBaseRepository<Entities.Mesa, int>
     {
-        List<Domain.Entities.Mesa> GetMesaByIdMesa(int IdMesa);
+        List<Entities.Mesa> GetMesaByIdMesa(int IdMesa);
  
     }
 }

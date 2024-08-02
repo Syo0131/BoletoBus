@@ -1,6 +1,4 @@
 ﻿
-
-using BoletoBus.Menu.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace BoletoBus.Usuario.Persistence.Context

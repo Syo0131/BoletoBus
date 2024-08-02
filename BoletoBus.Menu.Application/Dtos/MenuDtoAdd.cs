@@ -1,6 +1,7 @@
 ﻿namespace BoletoBus.Menu.Application.Dtos
 {
-    public record MenuDtoAdd
+    public class MenuDtoAdd : MenuBase
     {
+        public int IdPlato { get; set; }
     }
 }

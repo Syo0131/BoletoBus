@@ -1,6 +1,7 @@
 namespace BoletoBus.Mesa.Application.Dtos
 {
-    public record MesaDtoAdd
+    public class MesaDtoAdd : MesaBase
     {
+        public int IdMesa { get; set; }
     }
 }

@@ -1,29 +1,23 @@
 ﻿
 using BoletoBus.Menu.Domain.Interfaces;
 using BoletoBus.Menu.Persistence.Context;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+using System.Linq.Expressions;
 
 namespace BoletoBus.Menu.Persistence.Repositories
 {
     public class MenuRepository : IMenuRepository
     {
         private readonly BoletosBusContext context;
+        private readonly ILogger<MenuRepository> logger;
 
-        public MenuRepository(BoletosBusContext context)
+        public MenuRepository(BoletosBusContext context, ILogger<MenuRepository>logger)
         {
             this.context = context;
-        }
-        public void Delete(Domain.Entities.Menu entity)
-        {
-            this.context.Menu.Remove(entity);
-            this.context.SaveChanges();
+            this.logger = logger;
         }
 
-        public bool Exists(System.Linq.Expressions.Expression<Func<Domain.Entities.Menu, bool>> filter)
+        public bool Exists(Expression<Func<Domain.Entities.Menu, bool>> filter)
         {
             return this.context.Menu.Any(filter);
         }
@@ -38,48 +32,43 @@ namespace BoletoBus.Menu.Persistence.Repositories
             return this.context.Menu.Find(Id);
         }
 
-        public List<Domain.Entities.Menu> GetMenuByIdPlato(int IdPlato)
+        public List<Domain.Entities.Menu> GetMenuByIdPlato(int Id)
         {
-            return this.context.Menu.Where(r => r.IdPlato == IdPlato).ToList();
+            return this.context.Menu.Where(r => r.Id == Id).ToList();
         }
 
         public void Save(Domain.Entities.Menu entity)
         {
             try
             {
-                Domain.Entities.Menu menu = new Domain.Entities.Menu
-                {
-                    IdPlato = entity.IdPlato,
-                    Nombre = entity.Nombre,
-                    Descripcion = entity.Descripcion,
-                    Precio = entity.Precio,
-                    Categoria = entity.Categoria
-                };
-
-                this.context.Menu.Add(menu);
+                this.context.Menu.Add(entity);
                 this.context.SaveChanges();
             }
             catch (Exception ex)
             {
 
-                throw new Exception("Error al salvar el menu");
+                throw new Exception("Error al salvar el menu", ex);
             }
 
         }
 
         public void Update(Domain.Entities.Menu entity)
         {
-            var menu = this.context.Menu.Find(entity.IdPlato);
+            try
+            {
+                this.context.Menu.Update(entity);
+                this.context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
 
-            menu.IdPlato = entity.IdPlato;
-            menu.Nombre = entity.Nombre;
-            menu.Descripcion = entity.Descripcion;
-            menu.Precio = entity.Precio;
-            menu.Categoria = entity.Categoria;
-
-            this.context.Menu.Update(menu);
+                throw new Exception("Error al actualizar el menu", ex);
+            }
+        }
+        public void Delete(Domain.Entities.Menu entity)
+        {
+            this.context.Menu.Remove(entity);
             this.context.SaveChanges();
-
         }
     }
 }

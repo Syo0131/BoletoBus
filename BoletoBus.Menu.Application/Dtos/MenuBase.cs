@@ -1,8 +1,8 @@
 namespace BoletoBus.Menu.Application.Dtos
 {
-    public class MenuModel 
+    public abstract class MenuBase 
     {
-        public int IdPlato {get; set;}
+        
         public String? Nombre {get; set;}
         public String? Descripcion {get; set;}
         public decimal Precio {get; set;}

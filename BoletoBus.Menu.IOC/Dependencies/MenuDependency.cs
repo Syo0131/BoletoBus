@@ -8,7 +8,7 @@ namespace BoletoBus.Menu.IOC.Dependencies
 {
     public static class MenuDependency
     {
-        public static void AddMenuDependecy(this IServiceCollection service)
+        public static void AddMenuDependency(this IServiceCollection service)
         {
             service.AddScoped<IMenuRepository, MenuRepository>();
             service.AddTransient<IMenuService, MenuService>();

@@ -1,6 +1,7 @@
 namespace BoletoBus.Usuario.Application.Dtos
 {
-    public record UsuarioDtoAdd
+    public class UsuarioDtoAdd : UsuarioBase
     {
+        public int IdUsuario { get; set; }
     }
 }

@@ -18,7 +18,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<BoletosBusContext>(options => 
 options.UseSqlServer(builder.Configuration.GetConnectionString("BoletoBusContext")));
 
-builder.Services.AddMenuDependecy();
+builder.Services.AddMenuDependency();
 
 
 

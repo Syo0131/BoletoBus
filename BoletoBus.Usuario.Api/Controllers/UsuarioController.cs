@@ -18,7 +18,7 @@ namespace BoletoBus.Usuario.Api.Controllers
 
 
         // GET: api/<MenuController>
-        [HttpGet]
+        [HttpGet("GetUsuario")]
         public IActionResult Get()
         {
             var result = this.usuarioService.GetUsuario();
@@ -34,7 +34,7 @@ namespace BoletoBus.Usuario.Api.Controllers
         }
 
         // GET api/<MenuController>/5
-        [HttpGet("{id}")]
+        [HttpGet("GetUsuarioById")]
         public IActionResult Get(int id)
         {
             var result = this.usuarioService.GetUsuarios(id);
@@ -49,7 +49,7 @@ namespace BoletoBus.Usuario.Api.Controllers
         }
 
         // POST api/<MenuController>
-        [HttpPost]
+        [HttpPost("SaveUsuario")]
         public IActionResult Post([FromBody] UsuarioSaveModel SaveUsuario)
         {
             var result = this.usuarioService.GuardarUsuario(SaveUsuario);
@@ -64,7 +64,7 @@ namespace BoletoBus.Usuario.Api.Controllers
         }
 
         // PUT api/<MenuController>/5
-        [HttpPut("{id}")]
+        [HttpPut("UpdateUsuario")]
         public IActionResult Put(UsuarioUpdateModel usuarioupdate)
         {
             var result = this.usuarioService.UpdateUsuario(usuarioupdate);
@@ -79,7 +79,7 @@ namespace BoletoBus.Usuario.Api.Controllers
         }
 
         // DELETE api/<MenuController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete("DeleteUsuario")]
         public IActionResult Delete(UsuarioDeleteModel usuarioDelete)
         {
             var result = this.usuarioService.DeleteUsuario(usuarioDelete);

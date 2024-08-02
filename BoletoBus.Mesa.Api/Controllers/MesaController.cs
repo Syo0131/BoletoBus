@@ -13,12 +13,12 @@ namespace BoletoBus.Mesa.Api.Controllers
         private readonly IMesaService mesaService;
         public MesaController(IMesaService mesaService)
         {
-            this.mesaService =mesaService;
+            this.mesaService = mesaService;
         }
 
 
         // GET: api/<MenuController>
-        [HttpGet]
+        [HttpGet("GetMesa")]
         public IActionResult Get()
         {
             var result = this.mesaService.GetMesa();
@@ -34,7 +34,7 @@ namespace BoletoBus.Mesa.Api.Controllers
         }
 
         // GET api/<MenuController>/5
-        [HttpGet("{id}")]
+        [HttpGet("GetMesaById")]
         public IActionResult Get(int id)
         {
             var result = this.mesaService.GetMesas(id);
@@ -49,7 +49,7 @@ namespace BoletoBus.Mesa.Api.Controllers
         }
 
         // POST api/<MenuController>
-        [HttpPost]
+        [HttpPost("SaveMesa")]
         public IActionResult Post([FromBody] MesaSaveModel mesaSave)
         {
             var result = this.mesaService.SaveMesa(mesaSave);
@@ -64,7 +64,7 @@ namespace BoletoBus.Mesa.Api.Controllers
         }
 
         // PUT api/<MenuController>/5
-        [HttpPut("{id}")]
+        [HttpPut("UpdateMesa")]
         public IActionResult Put(MesaUpdateModel mesaUpdate)
         {
             var result = this.mesaService.ActualizarMesa(mesaUpdate);
@@ -79,7 +79,7 @@ namespace BoletoBus.Mesa.Api.Controllers
         }
 
         // DELETE api/<MenuController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete("DeleteMesa")]
         public IActionResult Delete(MesaDeleteModel mesaDelete)
         {
             var result = this.mesaService.DeleteMesa(mesaDelete);

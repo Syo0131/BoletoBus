@@ -20,87 +20,107 @@ namespace BoletoBus.Mesa.Application.Services
         }
         public ServiceResult GetMesa()
         {
-            ServiceResult result = new ServiceResult();
+            var mesas = mesaRepository.GetAll();
+            var mesasDtos = mesas.Select(r => new MesaDtoAdd
+            {
+                Capacidad = r.Capacidad,
+                Estado = r.Estado,
+            }).ToList();
 
-            try
+            return new ServiceResult
             {
-                result.Data = mesaRepository.GetAll();
-            }
-            catch (Exception ex)
-            {
-                result.Success = false;
-                result.Message = "No se puedo obtener las mesas";
-                
-            }
-            return result;
+                Success = true,
+                Message = "Mesa obtenida correctamente",
+                Result = mesasDtos
+            };
         }
-        public ServiceResult ActualizarMesa(MesaUpdateModel UpdateMesa)
-        {
-            ServiceResult result = new ServiceResult();
 
-            try
-            {
-                if (UpdateMesa is null)
-                {
-                    result.Success = false;
-                    result.Message = "";
-                    return result;
-                }
-            }
-            catch (Exception ex)
-            {
-                result.Success = false;
-                result.Message = "No se puedo actualizar los usuarios";
-            }
-            return result;
-        }
 
         public ServiceResult GetMesas(int id)
         {
-            ServiceResult result = new ServiceResult();
+            var mesas = mesaRepository.GetEntityBy(id);
+            if (mesas == null)
+            {
+                return new ServiceResult
+                {
+                    Success = false,
+                    Message = "Menu no encontrado"
+                };
+            }
 
-            try
+            var MesaDto = new MesaDtoAdd
             {
-                result.Data = this.mesaRepository.GetEntityBy(id);
-            }
-            catch (Exception ex)
+                Capacidad = mesas.Capacidad,
+                Estado = mesas.Estado,
+
+            };
+
+            return new ServiceResult
             {
-                result.Success = false;
-                result.Message = "No se puedo obtener los usuarios";
-            }
-            return result;
+                Success = true,
+                Message = "Mesa obtenida correctamente",
+                Result = MesaDto
+            };
         }
 
-        public ServiceResult SaveMesa(MesaSaveModel? SaveMesa)
+        public ServiceResult SaveMesa(MesaSaveModel SaveMesa)
         {
-            ServiceResult result = new ServiceResult();
-
-            try
+            Domain.Entities.Mesa mesa = new Domain.Entities.Mesa
             {
-               
+                Id = SaveMesa.IdMesa,
+                Capacidad = SaveMesa.Capacidad,
+                Estado = SaveMesa.Estado,
+            };
 
-            }
-            catch (Exception ex)
+            this.mesaRepository.Save(mesa);
+            return new ServiceResult
             {
-                result.Success = false;
-                result.Message = "No se puedo guardar la mesa";
+                Success = true,
+                Message = "Se añadio la mesa correctamente.",
+            };
+        }
+        public ServiceResult ActualizarMesa(MesaUpdateModel UpdateMesa)
+        {
+            var Umesa = mesaRepository.GetEntityBy(UpdateMesa.IdMesa);
+            if (Umesa == null)
+            {
+                return new ServiceResult
+                {
+                    Success = false,
+                    Message = "Mesa no encontrada"
+                };
             }
-            return result;
+
+
+
+            Umesa.Capacidad = UpdateMesa.Capacidad;
+            Umesa.Estado = UpdateMesa.Estado ?? Umesa.Estado;
+
+
+            this.mesaRepository.Update(Umesa);
+            return new ServiceResult
+            {
+                Success = true,
+                Message = "Mesa actualizada con exito"
+            };
         }
         public ServiceResult DeleteMesa(MesaDeleteModel DeleteMesa)
         {
-            ServiceResult result = new ServiceResult();
-
-            try
+            var Dmesa = mesaRepository.GetEntityBy(DeleteMesa.IdMesa);
+            if (Dmesa == null)
             {
-
+                return new ServiceResult
+                {
+                    Success = false,
+                    Message = "Mesa no encontrada"
+                };
             }
-            catch (Exception ex)
+            mesaRepository.Delete(Dmesa);
+            return new ServiceResult
             {
-                result.Success = false;
-                result.Message = "No se puedo eliminar las mesas";
-            }
-            return result;
+                Success = true,
+                Message = "Mesa Elmininada con exito"
+            };
         }
     }
 }
