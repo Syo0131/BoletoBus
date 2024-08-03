@@ -2,8 +2,8 @@
 {
     public class MesaGetModelBase
     {
-        public int idMesa { get; set; }
-        public int capacidad { get; set; }
-        public string? estado { get; set; }
+        public int IdMesa { get; set; }
+        public int Capacidad { get; set; }
+        public string? Estado { get; set; }
     }
 }

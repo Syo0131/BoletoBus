@@ -14,6 +14,8 @@
   <ItemGroup>
     <ProjectReference Include="..\BoletoBus.Menu.Application\BoletoBus.Menu.Application.csproj" />
     <ProjectReference Include="..\BoletoBus.Menu.Persistence\BoletoBus.Menu.Persistence.csproj" />
+    <ProjectReference Include="..\BoletoBus.Mesa.Application\BoletoBus.Mesa.Application.csproj" />
+    <ProjectReference Include="..\BoletoBus.Usuario.Application\BoletoBus.Usuario.Application.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
 ﻿namespace BoletoBus.Web.Models.Mesa
 {
-    public class MesaGetResult : BaseGetResult<MesaGetModelBase>
+    public class MesaGetResult : BaseResult<MesaGetModelBase>
     {
     }
 }

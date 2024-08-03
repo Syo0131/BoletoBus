@@ -1,50 +1,52 @@
-﻿using BoletoBus.Web.http;
+﻿using BoletoBus.Menu.Application.Dtos;
+using BoletoBus.Web.Links;
 using BoletoBus.Web.Models.Menu;
-using Microsoft.AspNetCore.Http;
+using BoletoBus.Web.Services;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using System.Runtime.CompilerServices;
+using Microsoft.Extensions.Options;
+
 
 namespace BoletoBus.Web.Controllers
 {
     public class MenuController : Controller
     {
 
-        private readonly ApiHelper _apiHelper;
+        private readonly ApiServices _services;
+        private readonly URL_sConfiguration _URL_sConfiguration;
 
-        public MenuController(ApiHelper apiHelper)
+        public MenuController(ApiServices apiService, IOptions<URL_sConfiguration> options)
         {
-            _apiHelper = apiHelper;
+            _services = apiService;
+            _URL_sConfiguration = options.Value;
         }
         // GET: MenuController
         public async Task<ActionResult> Index()
         {
-
-            var url = "http://localhost:5145/api/Menu/GetMenu";
-            var menuListGetResult = await _apiHelper.GetApiResponseAsync<MenuListGetResult>(url);
-
-            if (!menuListGetResult.success)
+            var apiResponse = await _services.Get<List<MenuGetModelBase>>(_URL_sConfiguration.GetMenu);
+            if (apiResponse.success)
             {
-                ViewBag.Message = menuListGetResult.message;
-                return View();
+                return View(apiResponse.Result);
             }
-            return View(menuListGetResult.Result ?? new List<MenuGetModelBase>());
-
+            else
+            {
+                ModelState.AddModelError(string.Empty, apiResponse.message);
+                return View(new List<MenuGetModelBase>());
+            }
         }
 
         // GET: MenuController/Details/5
         public async Task<ActionResult> Details(int id)
         {
-            var url = $"http://localhost:5145/api/Menu/GetMenubyId?id={id}";
-            var menuGetResult = await _apiHelper.GetApiResponseAsync<MenuGetResult>(url);
-
-            if (!menuGetResult.success)
+            var apiResponse = await _services.Get<MenuGetModelBase>(_URL_sConfiguration.GetMenuById(id));
+            if (apiResponse.success)
             {
-                ViewBag.Message = menuGetResult.message;
-                return View();
+                return View(apiResponse.Result);
             }
-            return View(menuGetResult.Result);
-
+            else
+            {
+                ModelState.AddModelError(string.Empty, apiResponse.message);
+                return NotFound();
+            }
         }
 
         // GET: MenuController/Create
@@ -56,66 +58,72 @@ namespace BoletoBus.Web.Controllers
         // POST: MenuController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(IFormCollection collection)
+        public async Task<ActionResult> Create(MenuSaveModel Menusave)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                var url = "http://localhost:5145/api/Menu/SaveMenu";
-                var menuGetResult = await _apiHelper.GetApiResponseAsync<MenuGetResult>(url);
-
-                if (!menuGetResult.success)
-                {
-                    ViewBag.Message = menuGetResult.message;
-                    return View();
-                }
-
+                return View(Menusave);
             }
-            catch
+
+            var apiResponse = await _services.Post(_URL_sConfiguration.SaveMenu, Menusave);
+
+            if (apiResponse.success)
             {
-                return View();
+                return RedirectToAction(nameof(Index));
             }
-            return RedirectToAction(nameof(Index));
+            else
+            {
+                ModelState.AddModelError(string.Empty, apiResponse.message);
+                return View(Menusave);
+            }
         }
 
         // GET: MenuController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            var apiResponse = await _services.Get<MenuGetModelBase>(_URL_sConfiguration.GetMenuById(id));
+            if (apiResponse.success)
+            {
+                var updatemenu = new MenuUpdateModel
+                {
+                    
+                    IdPlato = apiResponse.Result.IdPlato,
+                    Nombre = apiResponse.Result.Nombre,
+                    Descripcion = apiResponse.Result.Descripcion,
+                    Precio = apiResponse.Result.Precio,
+                    Categoria = apiResponse.Result.Categoria,
+                    
+                };
+
+                return View(updatemenu);
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, apiResponse.message);
+                return NotFound();
+            }
         }
 
         // POST: MenuController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<ActionResult> Edit(int id, MenuUpdateModel updatemenu)
         {
-            try
+            if (!ModelState.IsValid)
+            {
+                return View(updatemenu);
+            }
+
+            var apiResponse = await _services.Post(_URL_sConfiguration.GetMenuById(id), updatemenu);
+
+            if (apiResponse.success)
             {
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            else
             {
-                return View();
-            }
-        }
-
-        // GET: MenuController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: MenuController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
+                ModelState.AddModelError(string.Empty, apiResponse.message);
+                return View(updatemenu);
             }
         }
     }
