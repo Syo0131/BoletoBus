@@ -1,20 +1,50 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BoletoBus.Web.http;
+using BoletoBus.Web.Models.Menu;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Runtime.CompilerServices;
 
 namespace BoletoBus.Web.Controllers
 {
     public class MenuController : Controller
     {
-        // GET: MenuController
-        public ActionResult Index()
+
+        private readonly ApiHelper _apiHelper;
+
+        public MenuController(ApiHelper apiHelper)
         {
-            return View();
+            _apiHelper = apiHelper;
+        }
+        // GET: MenuController
+        public async Task<ActionResult> Index()
+        {
+
+            var url = "http://localhost:5145/api/Menu/GetMenu";
+            var menuListGetResult = await _apiHelper.GetApiResponseAsync<MenuListGetResult>(url);
+
+            if (!menuListGetResult.success)
+            {
+                ViewBag.Message = menuListGetResult.message;
+                return View();
+            }
+            return View(menuListGetResult.Result ?? new List<MenuGetModelBase>());
+
         }
 
         // GET: MenuController/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
-            return View();
+            var url = $"http://localhost:5145/api/Menu/GetMenubyId?id={id}";
+            var menuGetResult = await _apiHelper.GetApiResponseAsync<MenuGetResult>(url);
+
+            if (!menuGetResult.success)
+            {
+                ViewBag.Message = menuGetResult.message;
+                return View();
+            }
+            return View(menuGetResult.Result);
+
         }
 
         // GET: MenuController/Create
@@ -26,16 +56,25 @@ namespace BoletoBus.Web.Controllers
         // POST: MenuController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(IFormCollection collection)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var url = "http://localhost:5145/api/Menu/SaveMenu";
+                var menuGetResult = await _apiHelper.GetApiResponseAsync<MenuGetResult>(url);
+
+                if (!menuGetResult.success)
+                {
+                    ViewBag.Message = menuGetResult.message;
+                    return View();
+                }
+
             }
             catch
             {
                 return View();
             }
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: MenuController/Edit/5
